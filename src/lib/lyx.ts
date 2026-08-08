@@ -7,7 +7,7 @@ export async function askLyx(message: string, signal?: AbortSignal): Promise<str
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message }),
-    signal,
+    signal: signal ?? null,
   });
 
   if (!res.ok) throw new Error(`Lyx responded with ${res.status}`);
