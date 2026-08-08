@@ -116,10 +116,7 @@ export const timeline = [
     period: "Certifications",
     title: "DeepLearning.AI",
     org: "Andrew Ng",
-    points: [
-      "Machine Learning and Deep Learning Specialization.",
-      "AI For Everyone.",
-    ],
+    points: ["Machine Learning and Deep Learning Specialization.", "AI For Everyone."],
   },
 ];
 

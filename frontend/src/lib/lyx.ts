@@ -1,6 +1,5 @@
 const API_BASE = (
-  (import.meta.env["VITE_LYX_API_URL"] as string | undefined) ??
-  "http://127.0.0.1:8000"
+  (import.meta.env["VITE_LYX_API_URL"] as string | undefined) ?? "http://127.0.0.1:8000"
 ).replace(/\/$/, "");
 
 export async function askLyx(

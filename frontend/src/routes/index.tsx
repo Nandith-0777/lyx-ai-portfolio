@@ -68,9 +68,7 @@ function Index() {
           <div className="relative mx-auto max-w-5xl px-5 pt-40 pb-24 text-center sm:pt-48 sm:pb-32">
             <Reveal>
               <p className="eyebrow">{person.location}</p>
-              <h1 className="headline mt-4 text-[clamp(2.75rem,9vw,6rem)]">
-                Nandith Narayanan.
-              </h1>
+              <h1 className="headline mt-4 text-[clamp(2.75rem,9vw,6rem)]">Nandith Narayanan.</h1>
               <p className="headline mt-1 text-[clamp(1.75rem,5.5vw,3.5rem)] text-muted-foreground">
                 Building with AI, in public.
               </p>
@@ -253,7 +251,9 @@ function Index() {
 
       <footer className="border-t border-hairline">
         <div className="mx-auto flex max-w-5xl flex-col gap-2 px-5 py-8 text-[12px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Nandith Narayanan. {person.location}.</p>
+          <p>
+            © {new Date().getFullYear()} Nandith Narayanan. {person.location}.
+          </p>
           <p>Answers by Lyx are generated from verified portfolio data.</p>
         </div>
       </footer>
