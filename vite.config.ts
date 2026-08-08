@@ -1,18 +1,9 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwind from "@tailwindcss/vite";
-import path from "path";
+import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
-  root: path.resolve(__dirname, "frontend"),
-  plugins: [react(), tailwind()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "frontend/src"),
+  tanstackStart: {
+    server: {
+      entry: "server",
     },
-  },
-  server: {
-    port: 4173,
-    host: "0.0.0.0",
   },
 });
