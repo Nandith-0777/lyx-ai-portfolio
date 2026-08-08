@@ -4,6 +4,7 @@ from groq import Groq
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from pathlib import Path
 
 import os
 import json
@@ -13,7 +14,8 @@ import json
 # LOAD ENVIRONMENT VARIABLES
 # ============================================================
 
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(BASE_DIR / ".env")
 
 # Prefer standard environment variable name
 # but also accept the legacy name.
@@ -52,9 +54,11 @@ app.add_middleware(
 # ============================================================
 
 try:
-    with open("source.json", "r", encoding="utf-8") as file:
-        portfolio_data = json.load(file)
+	SOURCE_FILE = BASE_DIR / "source.json"
 
+	with open(SOURCE_FILE, "r", encoding="utf-8") as file:
+        	portfolio_data = json.load(file)
+	
 except FileNotFoundError:
     raise RuntimeError(
         "source.json was not found. "
