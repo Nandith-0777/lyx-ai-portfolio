@@ -75,8 +75,7 @@ export function LyxChat() {
         if (lastIndex >= 0) {
           updated[lastIndex] = {
             role: "assistant",
-            content:
-              "I couldn't reach the Lyx service right now. Please try again.",
+            content: "I couldn't reach the Lyx service right now. Please try again.",
           };
         }
 
@@ -96,16 +95,11 @@ export function LyxChat() {
 
         <div>
           <h3 className="font-medium">Lyx</h3>
-          <p className="text-xs text-muted-foreground">
-            Portfolio assistant
-          </p>
+          <p className="text-xs text-muted-foreground">Portfolio assistant</p>
         </div>
       </div>
 
-      <div
-        ref={scrollRef}
-        className="h-[420px] overflow-y-auto px-5 py-6"
-      >
+      <div ref={scrollRef} className="h-[420px] overflow-y-auto px-5 py-6">
         {messages.length === 0 ? (
           <div className="flex h-full items-center justify-center text-center">
             <p className="max-w-sm text-[17px] leading-relaxed text-muted-foreground">
@@ -119,13 +113,7 @@ export function LyxChat() {
               const isLast = index === messages.length - 1;
 
               return (
-                <div
-                  key={index}
-                  className={cn(
-                    "flex",
-                    isUser ? "justify-end" : "justify-start",
-                  )}
-                >
+                <div key={index} className={cn("flex", isUser ? "justify-end" : "justify-start")}>
                   <div
                     className={cn(
                       "max-w-[85%] whitespace-pre-wrap rounded-3xl px-4 py-3 text-[15px] leading-relaxed",
