@@ -238,7 +238,7 @@ function Index() {
                   href={person.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-hairline px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
                 >
                   <Github className="size-4" /> GitHub
                 </a>
@@ -246,10 +246,11 @@ function Index() {
                   href={person.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-hairline px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
                 >
                   <Linkedin className="size-4" /> LinkedIn
                 </a>
+
               </div>
             </Reveal>
           </div>
