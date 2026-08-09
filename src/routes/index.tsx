@@ -219,20 +219,21 @@ function Index() {
 
 
         {/* Contact */}
-        <section className="bg-surface">
-          <div className="mx-auto max-w-5xl px-5 py-24 text-center sm:py-32">
+        <section id="contact" className="bg-surface">
+          <div className="mx-auto max-w-5xl px-5 py-20 text-center sm:py-32">
             <Reveal>
               <p className="eyebrow">Currently</p>
-              <h2 className="headline mt-3 text-[clamp(2rem,5.5vw,3.5rem)]">
+              <h2 className="headline mt-3 text-[clamp(1.9rem,7vw,3.5rem)]">
                 Looking for an AI/ML internship.
               </h2>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
                 <a
                   href={`mailto:${person.email}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-[15px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-[15px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
                 >
                   <Mail className="size-4" /> {person.email}
                 </a>
+
                 <a
                   href={person.github}
                   target="_blank"
