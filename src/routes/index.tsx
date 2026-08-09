@@ -42,12 +42,12 @@ function Section({
 }) {
   return (
     <section id={id} className={tinted ? "bg-surface" : undefined}>
-      <div className="mx-auto max-w-5xl px-5 py-24 sm:py-32">
+      <div className="mx-auto max-w-5xl px-5 py-20 sm:py-32">
         <Reveal>
           <p className="eyebrow">{eyebrow}</p>
-          <h2 className="headline mt-3 max-w-3xl text-[clamp(2rem,5vw,3.25rem)]">{title}</h2>
+          <h2 className="headline mt-3 max-w-3xl text-[clamp(1.9rem,7vw,3.25rem)]">{title}</h2>
         </Reveal>
-        <div className="mt-14">{children}</div>
+        <div className="mt-10 sm:mt-14">{children}</div>
       </div>
     </section>
   );
@@ -59,49 +59,59 @@ function Index() {
       <NavBar />
 
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden">
+        {/* Hero — Lyx front and centre */}
+        <section id="lyx" className="relative overflow-hidden">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 -top-40 h-[560px] bg-[radial-gradient(60%_60%_at_50%_40%,var(--accent),transparent_70%)] opacity-70"
+            className="pointer-events-none absolute inset-x-0 -top-40 h-[640px] bg-[radial-gradient(55%_55%_at_50%_35%,var(--accent),transparent_70%)] opacity-80"
           />
-          <div className="relative mx-auto max-w-5xl px-5 pt-40 pb-24 text-center sm:pt-48 sm:pb-32">
-            <Reveal>
-              <p className="eyebrow">{person.location}</p>
-              <h1 className="headline mt-4 text-[clamp(2.75rem,9vw,6rem)]">
-                Nandith Narayanan.
-              </h1>
-              <p className="headline mt-1 text-[clamp(1.75rem,5.5vw,3.5rem)] text-muted-foreground">
-                Building with AI, in public.
-              </p>
+          <div className="relative mx-auto max-w-5xl px-5 pt-28 pb-16 sm:pt-40 sm:pb-24">
+            <div className="text-center">
+              <Reveal>
+                <p className="eyebrow">{person.location}</p>
+                <h1 className="headline mt-3 text-[clamp(2.4rem,10vw,5.5rem)]">
+                  Nandith Narayanan.
+                </h1>
+                <p className="headline text-gradient mt-1 text-[clamp(1.5rem,6.5vw,3.25rem)]">
+                  Don&apos;t read the résumé. Ask it.
+                </p>
+              </Reveal>
+              <Reveal delay={120}>
+                <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground sm:mt-8 sm:text-[19px]">
+                  {summary}
+                </p>
+              </Reveal>
+            </div>
+
+            <Reveal delay={200}>
+              <div className="mx-auto mt-10 max-w-3xl sm:mt-14">
+                <LyxChat />
+              </div>
             </Reveal>
-            <Reveal delay={120}>
-              <p className="mx-auto mt-8 max-w-2xl text-[19px] leading-relaxed text-muted-foreground">
-                {summary}
-              </p>
-            </Reveal>
-            <Reveal delay={220}>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href="#lyx"
-                  className="rounded-full bg-primary px-6 py-3 text-[15px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
-                >
-                  Ask Lyx about me
-                </a>
+
+            <Reveal delay={280}>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a
                   href="#work"
-                  className="group inline-flex items-center gap-1 rounded-full border border-hairline px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
+                  className="group inline-flex items-center gap-1 rounded-full border border-hairline bg-card px-5 py-3 text-[15px] font-medium transition-colors hover:border-primary sm:px-6"
                 >
                   See the work
                   <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-[15px] font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:px-6"
+                >
+                  <Mail className="size-4" /> Get in touch
+                </a>
               </div>
             </Reveal>
-            <Reveal delay={320}>
-              <dl className="mx-auto mt-20 grid max-w-3xl grid-cols-1 gap-10 sm:grid-cols-3">
+
+            <Reveal delay={340}>
+              <dl className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-8 text-center sm:mt-20 sm:grid-cols-3 sm:gap-10">
                 {stats.map((s) => (
                   <div key={s.label}>
-                    <dt className="headline text-4xl">{s.value}</dt>
+                    <dt className="headline text-3xl sm:text-4xl">{s.value}</dt>
                     <dd className="mt-2 text-[13px] leading-snug text-muted-foreground">
                       {s.label}
                     </dd>
@@ -119,10 +129,10 @@ function Index() {
           title="Projects that people actually use."
           tinted
         >
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2 md:gap-6">
             {projects.map((p, i) => (
               <Reveal key={p.name} delay={(i % 2) * 90}>
-                <article className="flex h-full flex-col rounded-4xl border border-hairline bg-card p-8 shadow-elevated transition-transform duration-500 hover:-translate-y-1">
+                <article className="flex h-full flex-col rounded-3xl border border-hairline bg-card p-6 shadow-elevated transition-transform duration-500 hover:-translate-y-1 sm:rounded-4xl sm:p-8">
                   <p className="eyebrow">{p.tag}</p>
                   <h3 className="headline mt-2 text-2xl">{p.name}</h3>
                   <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
@@ -169,7 +179,7 @@ function Index() {
 
         {/* Skills */}
         <Section id="skills" eyebrow="Toolkit" title="From tensors to interfaces.">
-          <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3">
             {skillGroups.map((g, i) => (
               <Reveal key={g.title} delay={(i % 3) * 80}>
                 <div className="border-t border-hairline pt-6">
@@ -187,10 +197,10 @@ function Index() {
 
         {/* Journey */}
         <Section id="journey" eyebrow="Journey" title="Learning, shipping, leading." tinted>
-          <div className="space-y-12">
+          <div className="space-y-10 sm:space-y-12">
             {timeline.map((t, i) => (
               <Reveal key={t.title} delay={i * 80}>
-                <div className="grid gap-4 border-t border-hairline pt-8 md:grid-cols-[200px_1fr]">
+                <div className="grid gap-3 border-t border-hairline pt-6 sm:pt-8 md:grid-cols-[200px_1fr] md:gap-4">
                   <p className="text-[13px] text-muted-foreground">{t.period}</p>
                   <div>
                     <h3 className="headline text-xl">{t.title}</h3>
@@ -207,33 +217,28 @@ function Index() {
           </div>
         </Section>
 
-        {/* Lyx */}
-        <Section id="lyx" eyebrow="Lyx" title="Ask my AI, not my inbox.">
-          <Reveal>
-            <LyxChat />
-          </Reveal>
-        </Section>
 
         {/* Contact */}
-        <section className="bg-surface">
-          <div className="mx-auto max-w-5xl px-5 py-24 text-center sm:py-32">
+        <section id="contact" className="bg-surface">
+          <div className="mx-auto max-w-5xl px-5 py-20 text-center sm:py-32">
             <Reveal>
               <p className="eyebrow">Currently</p>
-              <h2 className="headline mt-3 text-[clamp(2rem,5.5vw,3.5rem)]">
+              <h2 className="headline mt-3 text-[clamp(1.9rem,7vw,3.5rem)]">
                 Looking for an AI/ML internship.
               </h2>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center">
                 <a
                   href={`mailto:${person.email}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-[15px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-[15px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
                 >
                   <Mail className="size-4" /> {person.email}
                 </a>
+
                 <a
                   href={person.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-hairline px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
                 >
                   <Github className="size-4" /> GitHub
                 </a>
@@ -241,10 +246,11 @@ function Index() {
                   href={person.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-hairline px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-[15px] font-medium transition-colors hover:border-primary"
                 >
                   <Linkedin className="size-4" /> LinkedIn
                 </a>
+
               </div>
             </Reveal>
           </div>
