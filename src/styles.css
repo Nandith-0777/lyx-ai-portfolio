@@ -12,10 +12,6 @@
  *
  * The :root and .dark blocks define the actual color values using oklch.
  * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
 @theme inline {
@@ -52,6 +48,7 @@
   --color-hairline: var(--hairline);
   --shadow-elevated: var(--shadow-elevated);
   --shadow-float: var(--shadow-float);
+  --shadow-glow: var(--shadow-glow);
 }
 
 :root {
@@ -60,55 +57,68 @@
     -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
 
-  --background: oklch(0.994 0.001 265);
-  --foreground: oklch(0.24 0.005 285);
+  /* Warm graphite paper + deep indigo accent with a teal secondary spark */
+  --background: oklch(0.988 0.003 95);
+  --foreground: oklch(0.205 0.008 285);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.005 285);
+  --card-foreground: oklch(0.205 0.008 285);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.005 285);
-  --primary: oklch(0.585 0.185 254);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.963 0.002 265);
-  --secondary-foreground: oklch(0.24 0.005 285);
-  --muted: oklch(0.963 0.002 265);
-  --muted-foreground: oklch(0.55 0.006 285);
-  --accent: oklch(0.955 0.012 254);
-  --accent-foreground: oklch(0.44 0.16 254);
+  --popover-foreground: oklch(0.205 0.008 285);
+  --primary: oklch(0.505 0.18 274);
+  --primary-foreground: oklch(0.995 0 0);
+  --secondary: oklch(0.955 0.004 95);
+  --secondary-foreground: oklch(0.205 0.008 285);
+  --muted: oklch(0.955 0.004 95);
+  --muted-foreground: oklch(0.505 0.01 285);
+  --accent: oklch(0.945 0.03 274);
+  --accent-foreground: oklch(0.42 0.16 274);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.912 0.002 265);
-  --input: oklch(0.912 0.002 265);
-  --ring: oklch(0.585 0.185 254);
+  --border: oklch(0.905 0.004 95);
+  --input: oklch(0.905 0.004 95);
+  --ring: oklch(0.505 0.18 274);
 
-  --surface: oklch(0.968 0.001 265);
-  --surface-foreground: oklch(0.24 0.005 285);
-  --hairline: oklch(0.9 0.002 265);
+  --surface: oklch(0.963 0.005 95);
+  --surface-foreground: oklch(0.205 0.008 285);
+  --hairline: oklch(0.895 0.004 95);
 
-  --shadow-elevated: 0 1px 2px oklch(0.24 0.005 285 / 0.04), 0 12px 40px oklch(0.24 0.005 285 / 0.07);
-  --shadow-float: 0 2px 6px oklch(0.24 0.005 285 / 0.06), 0 24px 70px oklch(0.24 0.005 285 / 0.12);
+  --spark: oklch(0.72 0.13 195);
+
+  --gradient-lyx: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary) 12%, transparent),
+    color-mix(in oklab, var(--spark) 14%, transparent)
+  );
+
+  --shadow-elevated:
+    0 1px 2px oklch(0.205 0.008 285 / 0.04), 0 12px 40px oklch(0.205 0.008 285 / 0.07);
+  --shadow-float: 0 2px 6px oklch(0.205 0.008 285 / 0.06), 0 24px 70px oklch(0.205 0.008 285 / 0.12);
+  --shadow-glow:
+    0 2px 8px oklch(0.205 0.008 285 / 0.06), 0 30px 80px color-mix(in oklab, var(--primary) 18%, transparent);
 }
 
 .dark {
-  --background: oklch(0.16 0.003 285);
-  --foreground: oklch(0.97 0.001 265);
-  --card: oklch(0.21 0.004 285);
-  --card-foreground: oklch(0.97 0.001 265);
-  --popover: oklch(0.21 0.004 285);
-  --popover-foreground: oklch(0.97 0.001 265);
-  --primary: oklch(0.68 0.16 254);
-  --primary-foreground: oklch(0.16 0.003 285);
-  --secondary: oklch(0.25 0.004 285);
-  --secondary-foreground: oklch(0.97 0.001 265);
-  --muted: oklch(0.25 0.004 285);
-  --muted-foreground: oklch(0.68 0.005 285);
-  --accent: oklch(0.28 0.03 254);
-  --accent-foreground: oklch(0.85 0.1 254);
+  --background: oklch(0.155 0.006 285);
+  --foreground: oklch(0.97 0.002 95);
+  --card: oklch(0.205 0.008 285);
+  --card-foreground: oklch(0.97 0.002 95);
+  --popover: oklch(0.205 0.008 285);
+  --popover-foreground: oklch(0.97 0.002 95);
+  --primary: oklch(0.7 0.15 274);
+  --primary-foreground: oklch(0.155 0.006 285);
+  --secondary: oklch(0.245 0.008 285);
+  --secondary-foreground: oklch(0.97 0.002 95);
+  --muted: oklch(0.245 0.008 285);
+  --muted-foreground: oklch(0.7 0.008 285);
+  --accent: oklch(0.27 0.04 274);
+  --accent-foreground: oklch(0.86 0.09 274);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.68 0.16 254);
-  --surface: oklch(0.2 0.004 285);
-  --surface-foreground: oklch(0.97 0.001 265);
+  --ring: oklch(0.7 0.15 274);
+  --surface: oklch(0.195 0.007 285);
+  --surface-foreground: oklch(0.97 0.002 95);
   --hairline: oklch(1 0 0 / 12%);
+  --spark: oklch(0.78 0.12 195);
 }
 
 @layer base {
@@ -118,6 +128,8 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -125,10 +137,11 @@
     color: var(--color-foreground);
     font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   ::selection {
-    background: oklch(0.585 0.185 254 / 0.18);
+    background: color-mix(in oklab, var(--primary) 20%, transparent);
   }
 }
 
@@ -138,10 +151,27 @@
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
+@utility gradient-lyx {
+  background-image: var(--gradient-lyx);
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--foreground) 20%,
+    color-mix(in oklab, var(--primary) 85%, var(--foreground)) 55%,
+    var(--spark) 95%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 @utility headline {
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.028em;
   line-height: 1.05;
+  text-wrap: balance;
 }
 
 @utility eyebrow {
@@ -177,3 +207,26 @@
   }
 }
 
+@keyframes lyx-halo {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
