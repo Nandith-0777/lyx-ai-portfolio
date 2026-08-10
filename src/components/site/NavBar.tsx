@@ -85,7 +85,14 @@ export function NavBar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    if (l.href === "#lyx") {
+                      e.preventDefault();
+                      focusLyx();
+                      return;
+                    }
+                    setOpen(false);
+                  }}
                   className="block rounded-2xl px-4 py-3 text-[16px] font-medium transition-colors hover:bg-surface"
                 >
                   {l.label}
