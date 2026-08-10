@@ -12,10 +12,22 @@ export function LyxChat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, loading]);
+
+  useEffect(() => {
+    const onFocus = () => {
+      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 500);
+    };
+    window.addEventListener("lyx:focus", onFocus);
+    return () => window.removeEventListener("lyx:focus", onFocus);
+  }, []);
+
 
   const send = async (raw: string) => {
     const text = raw.trim();
@@ -41,7 +53,7 @@ export function LyxChat() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative" ref={cardRef}>
       <div
         aria-hidden
         className="pointer-events-none absolute -inset-4 -z-10 rounded-[3rem] gradient-lyx blur-2xl"
@@ -140,6 +152,7 @@ export function LyxChat() {
             className="flex items-center gap-2 rounded-full border border-hairline bg-background px-4 py-2 focus-within:border-primary"
           >
             <input
+              ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Lyx about Nandith…"

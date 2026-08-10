@@ -27,13 +27,16 @@ export function NavBar() {
     };
   }, [open]);
 
+  const focusLyx = () => {
+    setOpen(false);
+    window.dispatchEvent(new CustomEvent("lyx:focus"));
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
       <nav
-        className={`mx-auto flex max-w-3xl items-center justify-between gap-3 rounded-full px-4 py-2.5 transition-all duration-300 sm:px-5 ${
-          scrolled || open
-            ? "glass border border-hairline shadow-elevated"
-            : "border border-transparent"
+        className={`glass mx-auto flex max-w-3xl items-center justify-between gap-3 rounded-full border border-hairline px-4 py-2.5 transition-all duration-300 sm:px-5 ${
+          scrolled || open ? "shadow-elevated" : "shadow-none"
         }`}
       >
         <a
@@ -55,13 +58,14 @@ export function NavBar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#lyx"
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-[13px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          <button
+            type="button"
+            onClick={focusLyx}
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-[13px] font-medium text-primary-foreground shadow-glow transition-transform hover:scale-[1.03] active:scale-95"
           >
             <Sparkles className="size-3.5" />
             Ask Lyx
-          </a>
+          </button>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -81,7 +85,14 @@ export function NavBar() {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    if (l.href === "#lyx") {
+                      e.preventDefault();
+                      focusLyx();
+                      return;
+                    }
+                    setOpen(false);
+                  }}
                   className="block rounded-2xl px-4 py-3 text-[16px] font-medium transition-colors hover:bg-surface"
                 >
                   {l.label}
