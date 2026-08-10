@@ -60,32 +60,43 @@ export function LyxChat() {
         style={{ animation: "lyx-halo 6s ease-in-out infinite" }}
       />
       <div className="overflow-hidden rounded-[1.75rem] border border-hairline bg-card shadow-glow sm:rounded-4xl">
-        <div className="flex items-center gap-2.5 border-b border-hairline px-4 py-3.5 sm:px-6 sm:py-4">
-          <span className="relative flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <Sparkles className="size-4" />
+        <div className="flex items-center gap-3 border-b border-hairline bg-surface/40 px-4 py-3.5 sm:px-6 sm:py-4">
+          <span className="relative flex size-9 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-glow">
+            <span
+              aria-hidden
+              className="absolute -inset-1 rounded-full bg-primary/25"
+              style={{ animation: "lyx-halo 6s ease-in-out infinite" }}
+            />
+            <Sparkles className="relative size-4" />
           </span>
           <div className="leading-tight">
-            <p className="text-sm font-semibold tracking-tight">Lyx</p>
-            <p className="text-xs text-muted-foreground">Nandith&apos;s AI assistant</p>
+            <p className="text-[15px] font-semibold tracking-tight">Lyx</p>
+            <p className="text-[12.5px] text-muted-foreground">Nandith&apos;s AI assistant</p>
           </div>
-          <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-surface px-2.5 py-1 text-[11px] text-muted-foreground">
+          <span className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-hairline bg-card px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
             <span className="size-1.5 rounded-full bg-primary" />
             Online
           </span>
         </div>
 
+
         <div
           ref={scrollRef}
-          className="h-[46vh] min-h-[300px] overflow-y-auto px-4 py-5 sm:h-[420px] sm:px-6 sm:py-6"
+          className="h-[38vh] min-h-[260px] overflow-y-auto px-4 py-6 sm:h-[360px] sm:px-6"
         >
           {messages.length === 0 && !loading ? (
             <div className="flex h-full flex-col items-center justify-center text-center">
-              <p className="max-w-sm text-[16px] leading-relaxed text-muted-foreground sm:text-[17px]">
-                Ask anything about Nandith&apos;s work, skills or experience. Every answer comes
-                from his verified portfolio.
+              <span className="gradient-lyx flex size-12 items-center justify-center rounded-2xl border border-hairline">
+                <Sparkles className="size-5 text-primary" />
+              </span>
+              <p className="headline mt-4 text-[19px] sm:text-[21px]">Ask me anything.</p>
+              <p className="mt-2 max-w-[34ch] text-[14.5px] leading-relaxed text-muted-foreground sm:text-[15px]">
+                Work, skills, projects or experience — every answer comes straight from Nandith&apos;s
+                verified portfolio.
               </p>
             </div>
           ) : (
+
             <div className="space-y-4 sm:space-y-5">
               {messages.map((m, i) => (
                 <div

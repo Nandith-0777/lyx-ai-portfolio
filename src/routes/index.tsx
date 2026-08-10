@@ -81,20 +81,35 @@ function Index() {
           <div className="relative mx-auto max-w-5xl px-5 pt-28 pb-16 sm:pt-40 sm:pb-24">
             <div className="text-center">
               <Reveal>
-                <p className="eyebrow">{person.location}</p>
-                <h1 className="headline mt-3 text-[clamp(2.4rem,10vw,5.5rem)]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-card/70 px-3.5 py-1.5 text-[12.5px] font-medium text-muted-foreground shadow-elevated backdrop-blur">
+                  <span className="relative flex size-1.5">
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60" />
+                    <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
+                  </span>
+                  {person.location}
+                  <span className="h-3 w-px bg-hairline" />
+                  Open to AI/ML internships
+                </span>
+                <h1 className="headline mt-6 text-[clamp(2.4rem,10vw,5.5rem)]">
                   Nandith Narayanan.
                 </h1>
-                <p className="headline text-gradient mt-1 text-[clamp(1.5rem,6.5vw,3.25rem)]">
+                <p className="headline text-gradient mt-1.5 text-[clamp(1.5rem,6.5vw,3.25rem)]">
                   Don&apos;t read the résumé. Ask it.
                 </p>
               </Reveal>
               <Reveal delay={120}>
-                <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-muted-foreground sm:mt-8 sm:text-[19px]">
+                <p className="mx-auto mt-6 max-w-[46ch] text-balance text-[16.5px] leading-[1.7] text-muted-foreground sm:mt-7 sm:text-[18px]">
                   {summary}
                 </p>
               </Reveal>
+              <Reveal delay={160}>
+                <div
+                  aria-hidden
+                  className="mx-auto mt-9 h-px w-28 bg-gradient-to-r from-transparent via-hairline to-transparent sm:mt-11"
+                />
+              </Reveal>
             </div>
+
 
             <Reveal delay={200}>
               <div className="mx-auto mt-10 max-w-3xl sm:mt-14">
