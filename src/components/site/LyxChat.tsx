@@ -12,10 +12,22 @@ export function LyxChat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, loading]);
+
+  useEffect(() => {
+    const onFocus = () => {
+      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 500);
+    };
+    window.addEventListener("lyx:focus", onFocus);
+    return () => window.removeEventListener("lyx:focus", onFocus);
+  }, []);
+
 
   const send = async (raw: string) => {
     const text = raw.trim();
