@@ -65,6 +65,19 @@ function Index() {
             aria-hidden
             className="pointer-events-none absolute inset-x-0 -top-40 h-[640px] bg-[radial-gradient(55%_55%_at_50%_35%,var(--accent),transparent_70%)] opacity-80"
           />
+          <div
+            aria-hidden
+            className="grid-fade pointer-events-none absolute inset-x-0 top-0 h-[720px]"
+          />
+          <div
+            aria-hidden
+            className="aurora pointer-events-none absolute -left-24 top-24 size-[420px] rounded-full bg-primary/25"
+          />
+          <div
+            aria-hidden
+            className="aurora pointer-events-none absolute -right-24 top-56 size-[380px] rounded-full"
+            style={{ background: "color-mix(in oklab, var(--spark) 30%, transparent)", animationDelay: "3s" }}
+          />
           <div className="relative mx-auto max-w-5xl px-5 pt-28 pb-16 sm:pt-40 sm:pb-24">
             <div className="text-center">
               <Reveal>
