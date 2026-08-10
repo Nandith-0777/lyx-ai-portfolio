@@ -82,16 +82,21 @@ export function LyxChat() {
 
         <div
           ref={scrollRef}
-          className="h-[46vh] min-h-[300px] overflow-y-auto px-4 py-5 sm:h-[420px] sm:px-6 sm:py-6"
+          className="h-[38vh] min-h-[260px] overflow-y-auto px-4 py-6 sm:h-[360px] sm:px-6"
         >
           {messages.length === 0 && !loading ? (
             <div className="flex h-full flex-col items-center justify-center text-center">
-              <p className="max-w-sm text-[16px] leading-relaxed text-muted-foreground sm:text-[17px]">
-                Ask anything about Nandith&apos;s work, skills or experience. Every answer comes
-                from his verified portfolio.
+              <span className="gradient-lyx flex size-12 items-center justify-center rounded-2xl border border-hairline">
+                <Sparkles className="size-5 text-primary" />
+              </span>
+              <p className="headline mt-4 text-[19px] sm:text-[21px]">Ask me anything.</p>
+              <p className="mt-2 max-w-[34ch] text-[14.5px] leading-relaxed text-muted-foreground sm:text-[15px]">
+                Work, skills, projects or experience — every answer comes straight from Nandith&apos;s
+                verified portfolio.
               </p>
             </div>
           ) : (
+
             <div className="space-y-4 sm:space-y-5">
               {messages.map((m, i) => (
                 <div
