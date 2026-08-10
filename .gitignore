@@ -4,6 +4,8 @@
 
 node_modules/
 dist/
+.output/
+.wrangler/
 
 __pycache__/
 *.pyc
