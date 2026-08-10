@@ -259,8 +259,8 @@ def chat(request: ChatRequest):
                     }
                 ],
 
-                temperature=0.1,
-                max_tokens=300,
+                temperature=0.2,
+                max_tokens=600,
 
                 # IMPORTANT
                 stream=True
