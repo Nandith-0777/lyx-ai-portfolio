@@ -12,6 +12,5 @@ export async function askLyx(message: string, signal?: AbortSignal): Promise<str
 
   if (!res.ok) throw new Error(`Lyx responded with ${res.status}`);
 
-  const data = (await res.json()) as { response?: string };
-  return data.response ?? "Lyx returned an empty response.";
+  return await res.text();
 }
