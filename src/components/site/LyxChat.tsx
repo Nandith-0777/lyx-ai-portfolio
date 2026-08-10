@@ -152,6 +152,7 @@ export function LyxChat() {
             className="flex items-center gap-2 rounded-full border border-hairline bg-background px-4 py-2 focus-within:border-primary"
           >
             <input
+              ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Lyx about Nandith…"
