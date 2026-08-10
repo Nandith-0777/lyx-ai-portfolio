@@ -60,19 +60,25 @@ export function LyxChat() {
         style={{ animation: "lyx-halo 6s ease-in-out infinite" }}
       />
       <div className="overflow-hidden rounded-[1.75rem] border border-hairline bg-card shadow-glow sm:rounded-4xl">
-        <div className="flex items-center gap-2.5 border-b border-hairline px-4 py-3.5 sm:px-6 sm:py-4">
-          <span className="relative flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <Sparkles className="size-4" />
+        <div className="flex items-center gap-3 border-b border-hairline bg-surface/40 px-4 py-3.5 sm:px-6 sm:py-4">
+          <span className="relative flex size-9 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-glow">
+            <span
+              aria-hidden
+              className="absolute -inset-1 rounded-full bg-primary/25"
+              style={{ animation: "lyx-halo 6s ease-in-out infinite" }}
+            />
+            <Sparkles className="relative size-4" />
           </span>
           <div className="leading-tight">
-            <p className="text-sm font-semibold tracking-tight">Lyx</p>
-            <p className="text-xs text-muted-foreground">Nandith&apos;s AI assistant</p>
+            <p className="text-[15px] font-semibold tracking-tight">Lyx</p>
+            <p className="text-[12.5px] text-muted-foreground">Nandith&apos;s AI assistant</p>
           </div>
-          <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-surface px-2.5 py-1 text-[11px] text-muted-foreground">
+          <span className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-hairline bg-card px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
             <span className="size-1.5 rounded-full bg-primary" />
             Online
           </span>
         </div>
+
 
         <div
           ref={scrollRef}
