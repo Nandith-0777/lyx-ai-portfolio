@@ -58,13 +58,14 @@ export function NavBar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#lyx"
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-[13px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          <button
+            type="button"
+            onClick={focusLyx}
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-[13px] font-medium text-primary-foreground shadow-glow transition-transform hover:scale-[1.03] active:scale-95"
           >
             <Sparkles className="size-3.5" />
             Ask Lyx
-          </a>
+          </button>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
