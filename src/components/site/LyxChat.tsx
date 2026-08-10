@@ -53,7 +53,7 @@ export function LyxChat() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative" ref={cardRef}>
       <div
         aria-hidden
         className="pointer-events-none absolute -inset-4 -z-10 rounded-[3rem] gradient-lyx blur-2xl"
