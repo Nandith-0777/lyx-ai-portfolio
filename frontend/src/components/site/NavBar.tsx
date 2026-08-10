@@ -27,13 +27,16 @@ export function NavBar() {
     };
   }, [open]);
 
+  const focusLyx = () => {
+    setOpen(false);
+    window.dispatchEvent(new CustomEvent("lyx:focus"));
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
       <nav
-        className={`mx-auto flex max-w-3xl items-center justify-between gap-3 rounded-full px-4 py-2.5 transition-all duration-300 sm:px-5 ${
-          scrolled || open
-            ? "glass border border-hairline shadow-elevated"
-            : "border border-transparent"
+        className={`glass mx-auto flex max-w-3xl items-center justify-between gap-3 rounded-full border border-hairline px-4 py-2.5 transition-all duration-300 sm:px-5 ${
+          scrolled || open ? "shadow-elevated" : "shadow-none"
         }`}
       >
         <a
