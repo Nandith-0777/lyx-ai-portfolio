@@ -28,19 +28,27 @@ export function LyxChat() {
     return () => window.removeEventListener("lyx:focus", onFocus);
   }, []);
 
-
   const send = async (raw: string) => {
     const text = raw.trim();
     if (!text || loading) return;
     setInput("");
-    setMessages((m) => [...m, { role: "user", content: text }]);
+
+    // Add the user message and an empty assistant message we'll fill in as chunks arrive
+    setMessages((m) => [...m, { role: "user", content: text }, { role: "assistant", content: "" }]);
     setLoading(true);
+
     try {
-      const reply = await askLyx(text);
-      setMessages((m) => [...m, { role: "assistant", content: reply }]);
+      await askLyx(text, (chunk) => {
+        setMessages((m) => {
+          const next = [...m];
+          const last = next[next.length - 1];
+          next[next.length - 1] = { role: "assistant", content: last.content + chunk };
+          return next;
+        });
+      });
     } catch {
       setMessages((m) => [
-        ...m,
+        ...m.slice(0, -1),
         {
           role: "assistant",
           content:
@@ -79,7 +87,6 @@ export function LyxChat() {
           </span>
         </div>
 
-
         <div
           ref={scrollRef}
           className="h-[38vh] min-h-[260px] overflow-y-auto px-4 py-6 sm:h-[360px] sm:px-6"
@@ -96,47 +103,51 @@ export function LyxChat() {
               </p>
             </div>
           ) : (
-
             <div className="space-y-4 sm:space-y-5">
-              {messages.map((m, i) => (
-                <div
-                  key={i}
-                  className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}
-                >
+              {messages.map((m, i) => {
+                const isLastAssistant =
+                  m.role === "assistant" && i === messages.length - 1;
+                const showTyping = isLastAssistant && loading && m.content.length === 0;
+
+                return (
                   <div
-                    className={cn(
-                      "max-w-[88%] rounded-3xl px-4 py-3 text-[15px] leading-relaxed sm:max-w-[85%]",
-                      m.role === "user"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-surface text-surface-foreground",
-                    )}
+                    key={i}
+                    className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}
                   >
-                    {m.role === "assistant" ? (
-                      <div className="space-y-3 [&_a]:text-primary [&_a]:underline [&_li]:ml-4 [&_li]:list-disc [&_strong]:font-semibold [&_ul]:space-y-1.5">
-                        <ReactMarkdown>{m.content}</ReactMarkdown>
-                      </div>
-                    ) : (
-                      m.content
-                    )}
+                    <div
+                      className={cn(
+                        "max-w-[88%] rounded-3xl px-4 py-3 text-[15px] leading-relaxed sm:max-w-[85%]",
+                        m.role === "user"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-surface text-surface-foreground",
+                      )}
+                    >
+                      {m.role === "assistant" ? (
+                        showTyping ? (
+                          <div className="flex items-center gap-1.5 py-1">
+                            {[0, 1, 2].map((i) => (
+                              <span
+                                key={i}
+                                className="size-1.5 rounded-full bg-muted-foreground"
+                                style={{
+                                  animation: "lyx-pulse 1.2s ease-in-out infinite",
+                                  animationDelay: `${i * 0.15}s`,
+                                }}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="space-y-3 [&_a]:text-primary [&_a]:underline [&_li]:ml-4 [&_li]:list-disc [&_strong]:font-semibold [&_ul]:space-y-1.5">
+                            <ReactMarkdown>{m.content}</ReactMarkdown>
+                          </div>
+                        )
+                      ) : (
+                        m.content
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
-              {loading && (
-                <div className="flex justify-start">
-                  <div className="flex items-center gap-1.5 rounded-3xl bg-surface px-4 py-4">
-                    {[0, 1, 2].map((i) => (
-                      <span
-                        key={i}
-                        className="size-1.5 rounded-full bg-muted-foreground"
-                        style={{
-                          animation: "lyx-pulse 1.2s ease-in-out infinite",
-                          animationDelay: `${i * 0.15}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+                );
+              })}
             </div>
           )}
         </div>
