@@ -39,12 +39,13 @@ export const projects = [
     demo: "https://on-dot-next.vercel.app/",
   },
   {
-    name: "GPT from Scratch",
-    tag: "Deep Learning",
+    name: "AI Job Search Agent",
+    tag: "LLM Automation",
     description:
-      "Character-level GPT built from first principles: multi-head self-attention, positional encoding, feed-forward layers and layer normalization.",
-    impact: "Trained end to end and generated coherent autoregressive output.",
-    tech: ["Python", "PyTorch"],
+      "An autonomous agent that skips job marketplaces entirely and goes straight to the source: it scrapes ATS platforms companies actually post on — Greenhouse, Lever, Ashby — sidestepping LinkedIn/Naukri rate limits. Each posting is scored against your resume by Gemini, and top matches get an auto-generated tailored cover note.",
+    impact:
+      "Scans 2,000+ postings a day on a schedule and emails the top 5 pre-scored matches with direct apply links — with state tracking so nothing is flagged twice.",
+    tech: ["Python", "Gemini API", "Web Scraping", "SMTP", "Automation"],
   },
   {
     name: "PDF ChatBot (RAG)",
@@ -54,23 +55,15 @@ export const projects = [
     impact: "Grounds every answer in retrieved source content to reduce hallucination.",
     tech: ["LangChain", "ChromaDB", "OpenAI API", "Python"],
   },
+];
+
+export const awards = [
   {
-    name: "Color Detection",
-    tag: "Computer Vision",
+    place: "2nd Prize",
+    title: "Healthcare Innovation Contest 2026",
+    org: "AyuSetu AI × AroNexa — Final Round, Vidya Engineering College",
     description:
-      "Real-time webcam color detection using HSV masking, contour detection and dynamic bounding boxes.",
-    impact: "Runs live on webcam input.",
-    tech: ["OpenCV", "NumPy", "Pillow"],
-    github: "https://github.com/Nandith-0777/color-detection",
-  },
-  {
-    name: "Burglary Detection",
-    tag: "Computer Vision",
-    description:
-      "Motion detection through frame differencing and contour analysis, with automatic saving of motion frames and console alerts.",
-    impact: "Highlights movement in real time.",
-    tech: ["Python", "OpenCV"],
-    github: "https://github.com/Nandith-0777/Burglary-Detection",
+      "Won second place in the final round of a healthcare innovation ideathon, pitching AI-driven solutions for smarter, connected healthcare.",
   },
 ];
 
