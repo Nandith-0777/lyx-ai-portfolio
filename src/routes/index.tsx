@@ -205,6 +205,32 @@ function Index() {
           </div>
         </Section>
 
+        {/* Recognition */}
+        <Section id="recognition" eyebrow="Recognition" title="Award-winning ideas.">
+          <div className="grid gap-5 md:grid-cols-2 md:gap-6">
+            {awards.map((a, i) => (
+              <Reveal key={a.title} delay={(i % 2) * 90}>
+                <article className="relative h-full overflow-hidden rounded-3xl border border-hairline bg-card p-6 shadow-elevated sm:rounded-4xl sm:p-8">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-primary/15 blur-3xl"
+                  />
+                  <div className="relative">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-primary">
+                      <Award className="size-3.5" /> {a.place}
+                    </span>
+                    <h3 className="headline mt-4 text-2xl">{a.title}</h3>
+                    <p className="mt-1.5 text-[13.5px] font-medium text-muted-foreground">{a.org}</p>
+                    <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                      {a.description}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
         {/* Skills */}
         <Section id="skills" eyebrow="Toolkit" title="From tensors to interfaces.">
           <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-3">

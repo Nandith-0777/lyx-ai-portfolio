@@ -118,7 +118,7 @@ export const timeline = [
 
 export const suggestedQuestions = [
   "What are Nandith's strongest technical skills?",
-  "Tell me about the RAG chatbot project.",
-  "What is his experience with computer vision?",
+  "How does the AI Job Search Agent work?",
+  "Tell me about the Healthcare Innovation Contest win.",
   "Is he available for internships?",
 ];
