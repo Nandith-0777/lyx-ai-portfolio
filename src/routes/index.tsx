@@ -94,7 +94,7 @@ function Index() {
                   Nandith Narayanan.
                 </h1>
                 <p className="headline text-gradient mt-1.5 text-[clamp(1.5rem,6.5vw,3.25rem)]">
-                  Don&apos;t read the résumé. Ask it.
+                  AI/ML Engineer in the making.
                 </p>
               </Reveal>
               <Reveal delay={120}>

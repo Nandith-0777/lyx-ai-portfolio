@@ -42,6 +42,7 @@ export function LyxChat() {
         setMessages((m) => {
           const next = [...m];
           const last = next[next.length - 1];
+          if (!last) return m;
           next[next.length - 1] = { role: "assistant", content: last.content + chunk };
           return next;
         });
