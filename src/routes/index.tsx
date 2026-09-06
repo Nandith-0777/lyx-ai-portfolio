@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Award, Github, Linkedin, Mail } from "lucide-react";
 import { NavBar } from "@/components/site/NavBar";
 import { Reveal } from "@/components/site/Reveal";
 import { LyxChat } from "@/components/site/LyxChat";
-import { person, projects, skillGroups, stats, summary, timeline } from "@/data/portfolio";
+import { awards, person, projects, skillGroups, stats, summary, timeline } from "@/data/portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -198,6 +198,32 @@ function Index() {
                         Live <ArrowUpRight className="size-3.5" />
                       </a>
                     )}
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* Recognition */}
+        <Section id="recognition" eyebrow="Recognition" title="Award-winning ideas.">
+          <div className="grid gap-5 md:grid-cols-2 md:gap-6">
+            {awards.map((a, i) => (
+              <Reveal key={a.title} delay={(i % 2) * 90}>
+                <article className="relative h-full overflow-hidden rounded-3xl border border-hairline bg-card p-6 shadow-elevated sm:rounded-4xl sm:p-8">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-primary/15 blur-3xl"
+                  />
+                  <div className="relative">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3.5 py-1.5 text-[12.5px] font-semibold text-primary">
+                      <Award className="size-3.5" /> {a.place}
+                    </span>
+                    <h3 className="headline mt-4 text-2xl">{a.title}</h3>
+                    <p className="mt-1.5 text-[13.5px] font-medium text-muted-foreground">{a.org}</p>
+                    <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                      {a.description}
+                    </p>
                   </div>
                 </article>
               </Reveal>
