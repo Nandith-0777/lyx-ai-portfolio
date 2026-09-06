@@ -97,17 +97,6 @@ function Index() {
                   AI/ML Engineer in the making.
                 </p>
               </Reveal>
-              <Reveal delay={120}>
-                <p className="mx-auto mt-6 max-w-[46ch] text-balance text-[16.5px] leading-[1.7] text-muted-foreground sm:mt-7 sm:text-[18px]">
-                  {summary}
-                </p>
-              </Reveal>
-              <Reveal delay={160}>
-                <div
-                  aria-hidden
-                  className="mx-auto mt-9 h-px w-28 bg-gradient-to-r from-transparent via-hairline to-transparent sm:mt-11"
-                />
-              </Reveal>
             </div>
 
 
