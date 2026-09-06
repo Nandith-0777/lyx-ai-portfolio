@@ -3,7 +3,7 @@ import { ArrowUpRight, Award, Github, Linkedin, Mail } from "lucide-react";
 import { NavBar } from "@/components/site/NavBar";
 import { Reveal } from "@/components/site/Reveal";
 import { LyxChat } from "@/components/site/LyxChat";
-import { awards, person, projects, skillGroups, stats, summary, timeline } from "@/data/portfolio";
+import { awards, person, projects, skillGroups, stats, timeline } from "@/data/portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
