@@ -3,7 +3,7 @@ import { ArrowUpRight, Award, Github, Linkedin, Mail } from "lucide-react";
 import { NavBar } from "@/components/site/NavBar";
 import { Reveal } from "@/components/site/Reveal";
 import { LyxChat } from "@/components/site/LyxChat";
-import { awards, person, projects, skillGroups, stats, summary, timeline } from "@/data/portfolio";
+import { awards, person, projects, skillGroups, stats, timeline } from "@/data/portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -96,17 +96,6 @@ function Index() {
                 <p className="headline text-gradient mt-1.5 text-[clamp(1.5rem,6.5vw,3.25rem)]">
                   AI/ML Engineer in the making.
                 </p>
-              </Reveal>
-              <Reveal delay={120}>
-                <p className="mx-auto mt-6 max-w-[46ch] text-balance text-[16.5px] leading-[1.7] text-muted-foreground sm:mt-7 sm:text-[18px]">
-                  {summary}
-                </p>
-              </Reveal>
-              <Reveal delay={160}>
-                <div
-                  aria-hidden
-                  className="mx-auto mt-9 h-px w-28 bg-gradient-to-r from-transparent via-hairline to-transparent sm:mt-11"
-                />
               </Reveal>
             </div>
 

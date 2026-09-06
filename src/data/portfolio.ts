@@ -8,8 +8,6 @@ export const person = {
   github: "https://github.com/Nandith-0777",
 };
 
-export const summary =
-  "Third-year B.Tech student in Artificial Intelligence & Machine Learning with a strong foundation in Python, deep learning, and LLM engineering. From automation tools used daily by hundreds of college students to RAG pipelines and transformer models built from scratch.";
 
 export const stats = [
   { value: "15s", label: "Feedback flow, down from 15 minutes" },
